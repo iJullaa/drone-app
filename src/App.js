@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+
+import Header from './components/Header';
+import Hero from './components/Hero';
+import AboutProject from './components/AboutProject';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* Header jest teraz niezależnym elementem na górze */}
+      <Header /> 
+      
+      {/* Wszystkie sekcje strony umieszczamy w <main> */}
+      <main>
+        <Hero />
+        <AboutProject />
+      </main>
+
+      <Footer />
     </div>
   );
 }

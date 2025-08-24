@@ -1,38 +1,94 @@
-.App {
-  text-align: center;
+/* Podstawowe style i zmienne kolorów */
+:root {
+    --primary-orange: #F37037;
+    --primary-black: #000000;
+    --primary-white: #FFFFFF;
+    --light-grey: #E6E7E8;
+    --dark-grey: #414042;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    font-family: 'Roboto', sans-serif; /* Pamiętaj, aby dodać import czcionki w public/index.html */
+    margin: 0;
+    background-color: var(--primary-white);
+    color: var(--dark-grey);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Nagłówek i nawigacja */
+.main-header {
+    background-color: var(--primary-black);
+    padding: 15px 0;
+    border-bottom: 3px solid var(--primary-orange);
 }
 
-.App-link {
-  color: #61dafb;
+.logo-img {
+    height: 50px; /* Dostosuj wysokość logo */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 30px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--primary-white);
+    font-weight: 700;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--primary-orange);
+}
+
+/* Sekcja Hero */
+.hero {
+    color: var(--primary-white);
+    text-align: center;
+    padding: 100px 0;
+    background-color: #414042; /* Domyślny kolor tła */
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    background-color: var(--primary-orange);
+    color: var(--primary-white);
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #d9642b;
+}
+
+.hero-wrapper {
+  position: relative; /* Umożliwia pozycjonowanie absolutne Header wewnątrz */
 }

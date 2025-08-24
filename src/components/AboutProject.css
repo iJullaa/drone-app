@@ -1,0 +1,63 @@
+/* Główny kontener sekcji */
+.about-project-section {
+  padding: 100px 20px; /* Dużo przestrzeni wokół */
+  background-color: #fff; /* Czyste, białe tło */
+}
+
+/* Wewnętrzny kontener, który jest wyśrodkowany */
+.about-project-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex; /* Ustawiamy layout na dwie kolumny */
+  align-items: center; /* Wyrównujemy w pionie */
+  gap: 60px; /* Odstęp między tekstem a obrazkiem */
+}
+
+/* Stylizacja kolumny z tekstem */
+.text-content {
+  flex: 1; /* Pozwala kolumnie rosnąć */
+  max-width: 50%;
+}
+
+.text-content h1 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 25px;
+  color: #000;
+}
+
+/* Kolor dla wyróżnionego słowa */
+.text-content .highlight {
+  color: #F37037; /* Używamy naszego pomarańczowego koloru */
+}
+
+.text-content p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #6D6E71; /* Ciemnoszary kolor dla lepszej czytelności */
+}
+
+/* Stylizacja kolumny z obrazkiem */
+.image-content {
+  flex: 1;
+  max-width: 50%;
+}
+
+.image-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px; /* Zaokrąglone rogi */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Subtelny, profesjonalny cień */
+}
+
+/* Responsywność: Na mniejszych ekranach kolumny ustawią się jedna pod drugą */
+@media (max-width: 992px) {
+  .about-project-section .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .text-content, .image-content {
+    max-width: 100%;
+  }
+}
