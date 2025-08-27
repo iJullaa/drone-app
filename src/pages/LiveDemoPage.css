@@ -31,35 +31,11 @@
   margin-bottom: 40px;
 }
 
-/* Przyciski, status, karta raportu */
+/* --- TO ZOSTAWIAMY, BO DOTYCZY UKŁADU --- */
 .demo-controls {
   margin-bottom: 30px;
 }
-.demo-button {
-  padding: 15px 40px;
-  font-size: 18px;
-  font-weight: 700;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: #fff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-.demo-button.start {
-  background-color: #28a745;
-}
-.demo-button.start:hover {
-  background-color: #218838;
-  transform: translateY(-3px);
-}
-.demo-button.stop {
-  background-color: #dc3545;
-}
-.demo-button.stop:hover {
-  background-color: #c82333;
-  transform: translateY(-3px);
-}
+
 .status-indicator {
   display: flex;
   align-items: center;
@@ -114,48 +90,32 @@
   border-radius: 10px;
   border: 1px solid #ddd;
 }
-.report-download-button {
-  background-color: #f37037;
-  color: #fff;
-  padding: 12px 25px;
-  font-size: 16px;
-  font-weight: 700;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.report-download-button:hover {
-  background-color: #d9642b;
-  transform: translateY(-3px);
-}
 
-/* --- NOWA, DYNAMICZNA ANIMACJA DRONA --- */
+/* --- DYNAMICZNA ANIMACJA DRONA --- */
 .flying-drone-across {
   position: absolute;
-  z-index: 1; /* Pod treścią, nad tłem */
+  z-index: 1;
   width: 150px;
   height: auto;
   opacity: 0.8;
-  /* Przypisanie animacji */
   animation: fly-across 18s linear infinite;
-  animation-delay: -5s; /* Dron zaczyna już w trakcie lotu */
+  animation-delay: -5s;
 }
 
 @keyframes fly-across {
   0% {
     top: 20%;
-    left: -20%; /* Zaczyna poza ekranem po lewej */
+    left: -20%;
     transform: rotate(-15deg) scale(0.8);
   }
   50% {
     top: 40%;
-    left: 50%; /* Przelatuje przez środek */
+    left: 50%;
     transform: rotate(10deg) scale(1.2);
   }
   100% {
     top: 15%;
-    left: 120%; /* Kończy poza ekranem po prawej */
+    left: 120%;
     transform: rotate(-10deg) scale(0.7);
   }
 }

@@ -178,7 +178,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 10px 25px; 
+  padding: 10px 25px;
   text-decoration: none;
   font-weight: bold;
   border-radius: 50px;
@@ -197,6 +197,6 @@
 @media (max-width: 992px) {
   .mobile-nav-bottom .live-demo-button {
     border-radius: 10px;
-    clip-path: none; 
+    clip-path: none;
   }
 }

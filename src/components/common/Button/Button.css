@@ -1,0 +1,58 @@
+/* Podstawowy styl dla WSZYSTKICH przycisków */
+.btn {
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* --- WARIANTY --- */
+
+/* Pomarańczowy (główny) */
+.btn-primary {
+  background-color: #f37037;
+  color: #fff;
+}
+.btn-primary:hover {
+  background-color: #d9642b;
+}
+
+/* Szary (drugorzędny) */
+.btn-secondary {
+  background-color: #e6e7e8;
+  color: #414042;
+}
+.btn-secondary:hover {
+  background-color: #d1d3d4;
+}
+
+/* Zielony (start) */
+.btn-start {
+  background-color: #28a745;
+  color: #fff;
+}
+.btn-start:hover {
+  background-color: #218838;
+}
+
+/* Czerwony (stop) */
+.btn-stop {
+  background-color: #dc3545;
+  color: #fff;
+}
+.btn-stop:hover {
+  background-color: #c82333;
+}

@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import './Hero.css';
 import VideoModal from './VideoModal';
 
+import Button from './common/Button/Button';
+
 const PlayIcon = () => <span className="play-icon"></span>;
 const ArrowIcon = () => <span className="arrow-icon">→</span>;
 
 const Hero = () => {
-  // Stan do zarządzania widocznością modala
   const [isModalOpen, setModalOpen] = useState(false);
-
-  // Funkcje do otwierania i zamykania
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
@@ -17,20 +16,21 @@ const Hero = () => {
     <>
       <section className="hero-section">
         <div className="hero-content">
-          <h1>Drone-based Crack Inspection</h1>
-          <p> Automated surface crack detection powered by YOLOv8</p>
+          <h1>Drone-based Building Inspection</h1>
+          <p>Automated surface crack detection powered by YOLOv8</p>
           <div className="cta-buttons">
-            <button onClick={openModal} className="cta-button primary">
+            <Button onClick={openModal} variant="primary">
               Watch video <PlayIcon />
-            </button>
-            <a href="#project" className="cta-button secondary">
-              More about project <ArrowIcon />
+            </Button>
+
+            <a href="/#project" style={{ textDecoration: 'none' }}>
+              <Button variant="secondary">
+                More about project <ArrowIcon />
+              </Button>
             </a>
           </div>
         </div>
       </section>
-
-      {/* Renderujemy nasz modal i przekazujemy mu stan oraz funkcję zamykania */}
       <VideoModal isOpen={isModalOpen} onClose={closeModal} />
     </>
   );

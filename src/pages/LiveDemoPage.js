@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './LiveDemoPage.css';
-// Importujemy tylko jeden obrazek drona do animacji
+// 1. Importujemy nasz nowy, reużywalny komponent Button
+import Button from '../components/common/Button/Button';
 import flyingDrone from '../assets/flying-drone.png';
 
 const LiveDemoPage = () => {
@@ -14,6 +15,7 @@ const LiveDemoPage = () => {
   };
 
   const handleReportDownload = () => {
+    // ... (funkcja pobierania pozostaje bez zmian) ...
     const reportData = {
       runId: selectedRun,
       timestamp: new Date().toISOString(),
@@ -36,7 +38,6 @@ const LiveDemoPage = () => {
 
   return (
     <div className="demo-page-container">
-      {/* JEDEN, GŁÓWNY DRON Z NOWĄ KLASĄ CSS */}
       <img
         src={flyingDrone}
         alt="Flying drone animation"
@@ -47,12 +48,13 @@ const LiveDemoPage = () => {
         <h1>Live Drone Inspection</h1>
         <p>Start the simulation to begin automated crack detection.</p>
         <div className="demo-controls">
-          <button
+          {/* 2. Zastępujemy stary przycisk */}
+          <Button
             onClick={handleToggleInspection}
-            className={`demo-button ${isInspecting ? 'stop' : 'start'}`}
+            variant={isInspecting ? 'stop' : 'start'} // Dynamicznie zmieniamy wariant
           >
             {isInspecting ? 'Stop Inspection' : 'Start Inspection'}
-          </button>
+          </Button>
         </div>
         <div className="demo-status">
           {isInspecting && (
@@ -79,12 +81,10 @@ const LiveDemoPage = () => {
                 <option value="run2">Run 2</option>
                 <option value="run3">Run 3</option>
               </select>
-              <button
-                onClick={handleReportDownload}
-                className="report-download-button"
-              >
+              {/* 3. Zastępujemy drugi przycisk */}
+              <Button onClick={handleReportDownload} variant="primary">
                 Download Report
-              </button>
+              </Button>
             </div>
           </div>
         )}
