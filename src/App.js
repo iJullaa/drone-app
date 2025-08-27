@@ -1,25 +1,34 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
+import useHashScroll from './hooks/useHashScroll';
+
 import Header from './components/Header';
-import Hero from './components/Hero';
-import AboutProject from './components/AboutProject';
 import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import LiveDemoPage from './pages/LiveDemoPage';
+
+const AppContent = () => {
+  useHashScroll();
+
+  return (
+    <div className="App">
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/demo" element={<LiveDemoPage />} />
+      </Routes>
+      <Footer />
+    </div>
+  );
+};
 
 function App() {
   return (
-    <div className="App">
-      {/* Header jest teraz niezależnym elementem na górze */}
-      <Header /> 
-      
-      {/* Wszystkie sekcje strony umieszczamy w <main> */}
-      <main>
-        <Hero />
-        <AboutProject />
-      </main>
-
-      <Footer />
-    </div>
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 

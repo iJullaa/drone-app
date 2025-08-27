@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Hero.css';
-import VideoModal from './VideoModal'; // Importujemy nasz nowy komponent
-
+import VideoModal from './VideoModal';
 
 const PlayIcon = () => <span className="play-icon"></span>;
 const ArrowIcon = () => <span className="arrow-icon">→</span>;
@@ -18,10 +17,9 @@ const Hero = () => {
     <>
       <section className="hero-section">
         <div className="hero-content">
-          <h1>Drone-based Building Inspection</h1>
-            <p> Automated surface crack detection powered by YOLOv8</p>
+          <h1>Drone-based Crack Inspection</h1>
+          <p> Automated surface crack detection powered by YOLOv8</p>
           <div className="cta-buttons">
-            {/* Dodajemy onClick do przycisku */}
             <button onClick={openModal} className="cta-button primary">
               Watch video <PlayIcon />
             </button>

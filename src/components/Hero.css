@@ -1,92 +1,97 @@
 .hero-section {
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    padding: 150px 20px; 
-    min-height: 90vh;
-    color: #000;
-    margin-top: -80px;
-    
-    background-image: radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 70%), url('../assets/hero-background.jpg');
-    background-size: cover;
-    background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 150px 20px;
+  min-height: 90vh;
+  color: #000;
+  margin-top: -80px;
+
+  background-image:
+    radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0) 70%
+    ),
+    url('../assets/hero-background.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .hero-content {
-    max-width: 800px;
-    text-align: center; 
+  max-width: 1000px;
+  text-align: center;
 }
 
 .hero-content h1 {
-    font-size: 60px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    line-height: 1.2;
-    color: white;
-    text-shadow: 
-        0px 2px 4px rgba(0, 0, 0, 0.5),
-        0px 4px 10px rgba(0, 0, 0, 0.4); 
+  font-size: 60px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  color: white;
+  text-shadow:
+    0px 2px 4px rgba(0, 0, 0, 0.5),
+    0px 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 .hero-content p {
-    font-size: 20px;
-    margin-bottom: 40px;
-    line-height: 1.6;
-    font-weight: 500;
-    color: #ffffff;
-    text-shadow:
-        0px 1px 3px rgba(0, 0, 0, 0.6);
+  font-size: 20px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  font-weight: 500;
+  color: #ffffff;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 /* Kontener na przyciski */
 .cta-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center; 
+  display: flex;
+  gap: 20px;
+  justify-content: center;
 }
 
 .cta-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 15px 30px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 50px;
-    font-size: 16px;
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
-    cursor: pointer; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 50px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 /* Styl głównego przycisku (pomarańczowy) */
 .cta-button.primary {
-    background-color: #F37037;
-    color: #fff;
-    border-color: #F37037;
+  background-color: #f37037;
+  color: #fff;
+  border-color: #f37037;
 }
 
 /* Styl drugiego przycisku (szary) */
 .cta-button.secondary {
-    background-color: #e6e7e8;
-    color: #414042;
+  background-color: #e6e7e8;
+  color: #414042;
 }
 
 .cta-button:hover {
-    transform: translateY(-3px);
+  transform: translateY(-3px);
 }
 
 /* Proste ikony z użyciem CSS */
 .play-icon {
-    width: 0;
-    height: 0;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-left: 12px solid #fff;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid #fff;
 }
 
 .arrow-icon {
-    font-size: 24px;
-    line-height: 1;
+  font-size: 24px;
+  line-height: 1;
 }

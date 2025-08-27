@@ -1,173 +1,209 @@
 /* --- Główny pasek nagłówka --- */
 .main-header {
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 15px 0;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e7e7e7;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 15px 0;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e7e7e7;
 
-    /* KLUCZOWE WŁAŚCIWOŚCI DLA "STICKY" */
-    position: sticky; /* Zmieniamy z absolute na sticky */
-    top: 15px; /* Odstęp od góry ekranu */
-    width: 95%;
-    max-width: 1200px;
-    z-index: 1000;
-        margin: 0 auto; 
-
+  /* KLUCZOWE WŁAŚCIWOŚCI DLA "STICKY" */
+  position: sticky; /* Zmieniamy z absolute na sticky */
+  top: 15px; /* Odstęp od góry ekranu */
+  width: 95%;
+  max-width: 1200px;
+  z-index: 1000;
+  margin: 0 auto;
 }
 
 .main-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 25px;
-    margin: 0;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  margin: 0;
+  width: 100%;
 }
 
 .logo-svg {
-    height: 35px;
-    fill: #000;
+  height: 35px;
+  fill: #000;
 }
 
 .main-header .report-button {
-    background-color: #F37037;
-    color: #fff;
-    border: 2px solid #F37037;
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.3s ease;
+  background-color: #f37037;
+  color: #fff;
+  border: 2px solid #f37037;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .main-header .report-button:hover {
-    background-color: transparent;
-    color: #F37037;
+  background-color: transparent;
+  color: #f37037;
 }
 
 /* Ukrywamy hamburger na desktopie */
 .hamburger-menu {
-    display: none;
+  display: none;
 }
 
 /* --- Nawigacja na desktopie --- */
 .desktop-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
 }
 
 .desktop-nav li {
-    margin-left: 35px;
+  margin-left: 35px;
 }
 
 .desktop-nav a {
-    text-decoration: none;
-    color: #414042;
-    font-weight: 500;
-    font-size: 16px;
-    transition: color 0.3s ease;
+  text-decoration: none;
+  color: #414042;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s ease;
 }
 
 .desktop-nav a:hover {
-    color: #F37037;
+  color: #f37037;
 }
 
 /* --- Wysuwane menu mobilne --- */
 .mobile-nav {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    z-index: 2000;
-    padding: 20px 25px;
-    display: flex;
-    flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 2000;
+  padding: 20px 25px;
+  display: flex;
+  flex-direction: column;
 
-    /* Ukrywamy menu poza ekranem i przygotowujemy animację */
-    transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  /* Ukrywamy menu poza ekranem i przygotowujemy animację */
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .mobile-nav.open {
-    transform: translateX(0); /* Wsuwamy menu na ekran */
+  transform: translateX(0); /* Wsuwamy menu na ekran */
 }
 
 .mobile-nav-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #e7e7e7;
-    padding-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e7e7e7;
+  padding-bottom: 15px;
 }
 
-.close-menu, .hamburger-menu {
-    background: none;
-    border: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: #000;
+.close-menu,
+.hamburger-menu {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #000;
 }
 
 .mobile-nav-links {
-    flex-grow: 1; /* Wypełnia dostępną przestrzeń */
-    padding-top: 30px;
+  flex-grow: 1; /* Wypełnia dostępną przestrzeń */
+  padding-top: 30px;
 }
 
 .mobile-nav-links ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .mobile-nav-links li {
-    border-bottom: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
 }
 
 .mobile-nav-links a {
-    display: block;
-    padding: 20px 0;
-    text-decoration: none;
-    color: #000;
-    font-size: 22px;
-    font-weight: 500;
+  display: block;
+  padding: 20px 0;
+  text-decoration: none;
+  color: #000;
+  font-size: 22px;
+  font-weight: 500;
 }
 
 .mobile-nav-bottom {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
 .mobile-nav-bottom .contact-button {
-    background-color: #F37037;
-    color: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    width: 100%;
-    display: block;
-    text-decoration: none;
-    font-size: 18px;
+  background-color: #f37037;
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
+  display: block;
+  text-decoration: none;
+  font-size: 18px;
 }
-
 
 /* --- MEDIA QUERY - Zmiany dla urządzeń mobilnych --- */
 @media (max-width: 992px) {
-    .desktop-nav {
-        display: none; /* Ukrywamy nawigację desktopową */
-    }
-    .hamburger-menu {
-        display: block; /* Pokazujemy hamburger */
-    }
-    .main-header {
-        border-radius: 0;
-        top: 0;
-        width: 100%;
-        border-left: none;
-        border-right: none;
-    }
+  .desktop-nav {
+    display: none; /* Ukrywamy nawigację desktopową */
+  }
+  .hamburger-menu {
+    display: block; /* Pokazujemy hamburger */
+  }
+  .main-header {
+    border-radius: 0;
+    top: 0;
+    width: 100%;
+    border-left: none;
+    border-right: none;
+  }
+}
+
+.live-demo-button {
+  background-color: #f37037;
+  color: #fff;
+  border: none; /* Usuwamy border, bo efekt uzyskamy przez clip-path */
+  padding: 10px 25px; /* Lekko zmieniamy padding dla lepszego dopasowania */
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer; /* Dodajemy kursor, bo to przycisk */
+
+  /* --- KLUCZOWA ZMIANA --- */
+  /* Tworzymy efekt ściętych rogów */
+  clip-path: polygon(
+    15px 0%,
+    100% 0%,
+    100% calc(100% - 15px),
+    calc(100% - 15px) 100%,
+    0% 100%,
+    0% 15px
+  );
+}
+
+.live-demo-button:hover {
+  background-color: transparent;
+  color: #f37037;
+  border: 2px solid #f37037; /* Dodajemy border na hover dla lepszego efektu */
+}
+
+/* Dodajemy małą poprawkę do responsywności menu */
+@media (max-width: 992px) {
+  .mobile-nav-bottom .live-demo-button {
+    /* Dopasowujemy styl przycisku w menu mobilnym, jeśli jest taka potrzeba */
+    border-radius: 10px; /* Zwykłe zaokrąglenie na mobile jest lepsze */
+    clip-path: none; /* Usuwamy efekt ściętych rogów na mobile */
+  }
 }
