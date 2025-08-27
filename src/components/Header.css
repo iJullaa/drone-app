@@ -7,12 +7,13 @@
   border: 1px solid #e7e7e7;
 
   /* KLUCZOWE WŁAŚCIWOŚCI DLA "STICKY" */
-  position: sticky; /* Zmieniamy z absolute na sticky */
-  top: 15px; /* Odstęp od góry ekranu */
+  position: sticky;
+  top: 15px;
   width: 95%;
   max-width: 1200px;
   z-index: 1000;
   margin: 0 auto;
+  margin-top: -10px;
 }
 
 .main-header .container {
@@ -25,7 +26,8 @@
 }
 
 .logo-svg {
-  height: 35px;
+  margin: center;
+  height: 45px;
   fill: #000;
 }
 
@@ -94,7 +96,7 @@
 }
 
 .mobile-nav.open {
-  transform: translateX(0); /* Wsuwamy menu na ekran */
+  transform: translateX(0);
 }
 
 .mobile-nav-top {
@@ -115,7 +117,7 @@
 }
 
 .mobile-nav-links {
-  flex-grow: 1; /* Wypełnia dostępną przestrzeń */
+  flex-grow: 1;
   padding-top: 30px;
 }
 
@@ -172,38 +174,29 @@
 }
 
 .live-demo-button {
-  background-color: #f37037;
-  color: #fff;
-  border: none; /* Usuwamy border, bo efekt uzyskamy przez clip-path */
-  padding: 10px 25px; /* Lekko zmieniamy padding dla lepszego dopasowania */
-  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 25px; 
   text-decoration: none;
+  font-weight: bold;
+  border-radius: 50px;
+  font-size: 16px;
+  border: 2px solid transparent;
   transition: all 0.3s ease;
-  cursor: pointer; /* Dodajemy kursor, bo to przycisk */
-
-  /* --- KLUCZOWA ZMIANA --- */
-  /* Tworzymy efekt ściętych rogów */
-  clip-path: polygon(
-    15px 0%,
-    100% 0%,
-    100% calc(100% - 15px),
-    calc(100% - 15px) 100%,
-    0% 100%,
-    0% 15px
-  );
+  cursor: pointer;
 }
 
 .live-demo-button:hover {
   background-color: transparent;
   color: #f37037;
-  border: 2px solid #f37037; /* Dodajemy border na hover dla lepszego efektu */
+  border: 2px solid #f37037;
 }
 
-/* Dodajemy małą poprawkę do responsywności menu */
 @media (max-width: 992px) {
   .mobile-nav-bottom .live-demo-button {
-    /* Dopasowujemy styl przycisku w menu mobilnym, jeśli jest taka potrzeba */
-    border-radius: 10px; /* Zwykłe zaokrąglenie na mobile jest lepsze */
-    clip-path: none; /* Usuwamy efekt ściętych rogów na mobile */
+    border-radius: 10px;
+    clip-path: none; 
   }
 }

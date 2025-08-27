@@ -1,33 +1,40 @@
 .demo-page-container {
+  padding: 120px 40px 40px 40px;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  background-image: url('../assets/grid-pattern.svg');
+  background-repeat: repeat;
+  background-size: 40px 40px;
+}
+
+/* Główny kontener na treść (nad animacją) */
+.main-content {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 120px 40px 40px 40px;
   text-align: center;
-  min-height: 100vh;
-
-  /* Kluczowe właściwości dla animacji w tle */
-  position: relative;
-  overflow: hidden;
 }
 
-.demo-page-container h1 {
+.main-content h1 {
   font-size: 42px;
   margin-bottom: 10px;
+  color: #000;
 }
-
-.demo-page-container p {
+.main-content p {
   font-size: 18px;
   color: #6d6e71;
   max-width: 500px;
   margin-bottom: 40px;
 }
 
-/* --- Sekcja Kontrolna --- */
+/* Przyciski, status, karta raportu */
 .demo-controls {
   margin-bottom: 30px;
 }
-
 .demo-button {
   padding: 15px 40px;
   font-size: 18px;
@@ -37,23 +44,22 @@
   cursor: pointer;
   transition: all 0.3s ease;
   color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
-
 .demo-button.start {
   background-color: #28a745;
 }
 .demo-button.start:hover {
   background-color: #218838;
+  transform: translateY(-3px);
 }
-
 .demo-button.stop {
   background-color: #dc3545;
 }
 .demo-button.stop:hover {
   background-color: #c82333;
+  transform: translateY(-3px);
 }
-
-/* --- Sekcja Statusu --- */
 .status-indicator {
   display: flex;
   align-items: center;
@@ -61,53 +67,53 @@
   font-size: 18px;
   color: #414042;
 }
-
 .spinner {
   width: 30px;
   height: 30px;
   border: 4px solid rgba(0, 0, 0, 0.1);
-  border-top-color: #f37037;
+  border-top-color: #4caf50;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
-
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
-
-/* --- Sekcja Raportu --- */
-.report-section {
-  margin-top: 50px;
+.report-card {
+  margin-top: 80px;
   padding: 40px;
   border-radius: 20px;
   background-color: #fff;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f0f0f0;
   width: 100%;
   max-width: 600px;
+  text-align: center;
 }
-
-.report-section h2 {
+.report-card h2 {
   font-size: 28px;
   margin-top: 0;
+  color: #000;
 }
-
+.report-card .card-subtitle {
+  font-size: 16px;
+  color: #6d6e71;
+  margin-top: -10px;
+}
 .report-controls {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
-  margin-top: 20px;
+  margin-top: 30px;
 }
-
 .report-select {
   padding: 12px 20px;
   font-size: 16px;
   border-radius: 10px;
   border: 1px solid #ddd;
 }
-
 .report-download-button {
   background-color: #f37037;
   color: #fff;
@@ -117,38 +123,39 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
-
 .report-download-button:hover {
   background-color: #d9642b;
+  transform: translateY(-3px);
 }
 
-/* --- Animacja Drona w Tle --- */
-.demo-flying-drone {
+/* --- NOWA, DYNAMICZNA ANIMACJA DRONA --- */
+.flying-drone-across {
   position: absolute;
-  top: 10%;
-  right: 5%;
-  width: 250px;
-  opacity: 0.1;
-  z-index: -1; /* Umieszcza drona za całą treścią */
-  animation: fly-background 20s ease-in-out infinite;
+  z-index: 1; /* Pod treścią, nad tłem */
+  width: 150px;
+  height: auto;
+  opacity: 0.8;
+  /* Przypisanie animacji */
+  animation: fly-across 18s linear infinite;
+  animation-delay: -5s; /* Dron zaczyna już w trakcie lotu */
 }
 
-@keyframes fly-background {
+@keyframes fly-across {
   0% {
-    transform: translateY(0) translateX(0) rotate(0deg) scale(1);
-  }
-  25% {
-    transform: translateY(-30px) translateX(-50px) rotate(-5deg) scale(1.1);
+    top: 20%;
+    left: -20%; /* Zaczyna poza ekranem po lewej */
+    transform: rotate(-15deg) scale(0.8);
   }
   50% {
-    transform: translateY(0) translateX(-100px) rotate(5deg) scale(1);
-  }
-  75% {
-    transform: translateY(30px) translateX(-50px) rotate(-5deg) scale(0.9);
+    top: 40%;
+    left: 50%; /* Przelatuje przez środek */
+    transform: rotate(10deg) scale(1.2);
   }
   100% {
-    transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+    top: 15%;
+    left: 120%; /* Kończy poza ekranem po prawej */
+    transform: rotate(-10deg) scale(0.7);
   }
 }
