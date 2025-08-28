@@ -32,8 +32,7 @@
     "extends": [
       "react-app",
       "react-app/jest",
-      "plugin:prettier/recommended",
-      "plugin:storybook/recommended"
+      "plugin:prettier/recommended"
     ]
   },
   "browserslist": {
