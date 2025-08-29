@@ -1,0 +1,82 @@
+.livestream-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(10, 25, 47, 0.85);
+  z-index: 9998;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.livestream-modal-content {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  padding: 20px;
+  border-radius: 15px;
+  cursor: default;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.livestream-close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.livestream-close-button:hover {
+  background-color: #dc3545;
+}
+
+.livestream-header {
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: monospace;
+}
+
+.live-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #dc3545;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.livestream-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}

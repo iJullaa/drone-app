@@ -43,15 +43,12 @@
   text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-/* --- TO ZOSTAWIAMY --- */
-/* Te style dotyczą UKŁADU przycisków, a nie ich wyglądu, więc są potrzebne */
 .cta-buttons {
   display: flex;
   gap: 20px;
   justify-content: center;
 }
 
-/* Te style są specyficzne dla ikon wewnątrz przycisków w sekcji Hero */
 .play-icon {
   width: 0;
   height: 0;

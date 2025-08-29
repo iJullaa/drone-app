@@ -18,21 +18,21 @@ import member6 from '../assets/team-member-1.jpeg';
 
 const initialTeamData = [
   { id: 1, name: 'Krzysztof Chwalisz', role: '[SUPERVISOR]', image: member1 },
-  { id: 2, name: 'Julia Szaniawska', role: '[AI/ML ENGINEER]', image: member2 },
-  { id: 3, name: 'Michał Zawitaj', role: '[AI/ML ENGINEER]', image: member3 },
+  { id: 2, name: 'Julia Szaniawska', role: '', image: member2 },
+  { id: 3, name: 'Michał Zawitaj', role: '', image: member3 },
   {
     id: 4,
     name: 'Bartłomiej Kacperski',
-    role: '[AI/ML ENGINEER]',
+    role: '',
     image: member4,
   },
   {
     id: 5,
     name: 'Aleksander Frączak',
-    role: '[AI/ML ENGINEER]',
+    role: '',
     image: member5,
   },
-  { id: 6, name: 'Szymon Drdzeń', role: '[AI/ML ENGINEER]', image: member6 },
+  { id: 6, name: 'Szymon Drdzeń', role: '', image: member6 },
 ];
 
 const AboutUs = () => {
@@ -49,10 +49,8 @@ const AboutUs = () => {
     }
   }
 
-  // Zwracamy teraz kontener, który zawiera nagłówek grupy i siatkę
   return (
     <div className="team-container">
-      {/* --- DODANY NAGŁÓWEK --- */}
       <h3 className="team-group-title">Group 1 AI/ML</h3>
 
       <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>

@@ -5,23 +5,23 @@ const useHashScroll = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Czekamy na "chwilę", aby upewnić się, że strona się w pełni wyrenderowała
+    // We wait for a "moment" to make sure the page has fully rendered
     const timer = setTimeout(() => {
       const hash = location.hash;
       if (hash) {
-        // Usuwamy '#' z hasha, aby uzyskać czyste ID
+        // Remove '#' from the hash to get the clean ID
         const id = hash.replace('#', '');
         const element = document.getElementById(id);
 
         if (element) {
-          // Jeśli element istnieje, przewijamy do niego
+          // If the element exists, scroll to it
           element.scrollIntoView({ behavior: 'smooth' });
         }
       }
-    }, 100); // 100ms to bezpieczne opóźnienie
+    }, 100); // 100ms to ensure safe delay
 
-    return () => clearTimeout(timer); // Czystka po odmontowaniu komponentu
-  }, [location]); // Ten efekt uruchamia się za każdym razem, gdy zmienia się URL
+    return () => clearTimeout(timer); // Cleanup on component unmount
+  }, [location]); // This effect runs every time the URL changes
 };
 
 export default useHashScroll;

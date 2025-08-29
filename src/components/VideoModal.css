@@ -1,11 +1,11 @@
-/* Półprzezroczyste tło za wideo */
+/* Semi-transparent background behind the video */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(10, 25, 47, 0.8); /* Ciemne tło */
+  background-color: rgba(10, 25, 47, 0.8);
   z-index: 9998;
   display: flex;
   justify-content: center;
@@ -13,15 +13,15 @@
   cursor: pointer;
 }
 
-/* Biała ramka wokół wideo */
+/* White border around the video */
 .modal-content {
-  background-color: #f0f0f0; /* Jasnoszare tło ramki */
+  background-color: #f0f0f0;
   padding: 20px;
   cursor: default;
   width: 90%;
   max-width: 1100px;
 
-  /* KLUCZOWA WŁAŚCIWOŚĆ: Tworzymy charakterystyczny kształt */
+  /* KEY PROPERTY: Creating the distinctive shape */
   clip-path: polygon(
     0 4%,
     4% 0,
@@ -34,19 +34,19 @@
   );
 }
 
-/* Wrapper, który zachowuje proporcje wideo 16:9 */
+/* Wrapper that maintains the 16:9 video aspect ratio */
 .player-wrapper {
   position: relative;
   padding-top: 56.25%; /* 16:9 Aspect Ratio */
 }
 
-/* Odtwarzacz wideo, który wypełnia wrapper */
+/* Video player that fills the wrapper */
 .react-player {
   position: absolute;
   top: 0;
   left: 0;
 
-  /* Nadpisujemy clip-path dla samego odtwarzacza, aby też miał ścięte rogi */
+  /* Overriding clip-path for the player itself to also have rounded corners */
   clip-path: polygon(
     0 4%,
     4% 0,

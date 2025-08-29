@@ -1,4 +1,4 @@
-/* Podstawowe style i zmienne kolorów */
+/* Basic style and color variables */
 :root {
   --primary-orange: #f37037;
   --primary-black: #000000;
@@ -23,7 +23,7 @@ body {
   align-items: center;
 }
 
-/* Nagłówek i nawigacja */
+/* Header and navigation */
 .main-header {
   background-color: var(--primary-black);
   padding: 15px 0;
@@ -57,7 +57,7 @@ body {
   color: var(--primary-orange);
 }
 
-/* Sekcja Hero */
+/* Hero section */
 .hero {
   color: var(--primary-white);
   text-align: center;

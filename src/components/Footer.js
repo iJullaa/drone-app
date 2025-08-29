@@ -1,7 +1,6 @@
 import React from 'react';
 import './Footer.css';
 
-// Importujemy ikony z biblioteki, którą właśnie zainstalowaliśmy
 import {
   FaLinkedinIn,
   FaTwitter,
@@ -13,7 +12,7 @@ const Footer = () => {
   return (
     <footer className="main-footer">
       <div className="footer-content">
-        {/* --- GÓRNA SEKCJA STOPKI --- */}
+        {/* --- UPPER SECTION --- */}
         <div className="footer-top">
           <div className="language-selector">
             Global / English <span>▼</span>
@@ -50,15 +49,15 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* --- DOLNA SEKCJA STOPKI --- */}
+        {/* --- LOWER SECTION --- */}
         <div className="footer-bottom">
           <div className="legal-links">
             <a href="/privacy">Privacy</a>
             <a href="/compliance">Compliance & Disclosures</a>
           </div>
           <p className="copyright">
-            &copy; {new Date().getFullYear()} Drone App Inc. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} Copyright GlobalLogic Inc. All
+            rights reserved.
           </p>
         </div>
       </div>

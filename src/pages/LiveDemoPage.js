@@ -1,39 +1,77 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './LiveDemoPage.css';
-// 1. Importujemy nasz nowy, reużywalny komponent Button
-import Button from '../components/common/Button/Button';
 import flyingDrone from '../assets/flying-drone.png';
+import Button from '../components/common/Button/Button';
+
+// Our backend address
+const BACKEND_URL = 'http://localhost:8000';
 
 const LiveDemoPage = () => {
   const [isInspecting, setIsInspecting] = useState(false);
   const [reportReady, setReportReady] = useState(false);
-  const [selectedRun, setSelectedRun] = useState('run1');
+  const [runs, setRuns] = useState([]); // State for the list of available "runs"
+  const [selectedRun, setSelectedRun] = useState(''); // State for the selected "run"
 
-  const handleToggleInspection = () => {
-    setIsInspecting(!isInspecting);
-    setReportReady(!isInspecting);
+  // Effect to fetch the list of "runs" on the initial page load
+  useEffect(() => {
+    const fetchRuns = async () => {
+      try {
+        const response = await fetch(`${BACKEND_URL}/runs`);
+        const data = await response.json();
+        setRuns(data);
+        // Set the default selected run to the first in the list
+        if (data.length > 0) {
+          setSelectedRun(data[0].run_id);
+        }
+      } catch (error) {
+        console.error('Failed to fetch runs:', error);
+      }
+    };
+    fetchRuns();
+  }, []);
+
+  // Effect to handle real-time WebSocket communication
+  useEffect(() => {
+    const ws = new WebSocket(`ws://localhost:8000/ws`);
+
+    ws.onopen = () => console.log('WebSocket Connected');
+    ws.onclose = () => console.log('WebSocket Disconnected');
+
+    // Listen for messages from the server
+    ws.onmessage = (event) => {
+      if (event.data === 'START_MISSION') {
+        setIsInspecting(true);
+        setReportReady(false);
+      } else if (event.data === 'STOP_MISSION') {
+        setIsInspecting(false);
+        setReportReady(true);
+      }
+    };
+
+    // Cleanup: close the connection when the component unmounts
+    return () => {
+      ws.close();
+    };
+  }, []);
+
+  // Function to send start/stop commands
+  const handleToggleInspection = async () => {
+    const endpoint = isInspecting ? '/stop-mission' : '/start-mission';
+    try {
+      await fetch(`${BACKEND_URL}${endpoint}`);
+    } catch (error) {
+      console.error(`Failed to send ${endpoint} command:`, error);
+    }
   };
 
+  // Function to download the report
   const handleReportDownload = () => {
-    // ... (funkcja pobierania pozostaje bez zmian) ...
-    const reportData = {
-      runId: selectedRun,
-      timestamp: new Date().toISOString(),
-      status: 'Completed',
-      cracksDetected: Math.floor(Math.random() * 10) + 1,
-      summary: 'Automated inspection completed successfully.',
-    };
-    const blob = new Blob([JSON.stringify(reportData, null, 2)], {
-      type: 'application/json',
-    });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `report-${selectedRun}.json`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    if (!selectedRun) {
+      alert('Please select a run to download.');
+      return;
+    }
+    // Open the report URL in a new tab - the browser will handle the download
+    window.open(`${BACKEND_URL}/report/${selectedRun}`, '_blank');
   };
 
   return (
@@ -48,10 +86,9 @@ const LiveDemoPage = () => {
         <h1>Live Drone Inspection</h1>
         <p>Start the simulation to begin automated crack detection.</p>
         <div className="demo-controls">
-          {/* 2. Zastępujemy stary przycisk */}
           <Button
             onClick={handleToggleInspection}
-            variant={isInspecting ? 'stop' : 'start'} // Dynamicznie zmieniamy wariant
+            variant={isInspecting ? 'stop' : 'start'}
           >
             {isInspecting ? 'Stop Inspection' : 'Start Inspection'}
           </Button>
@@ -72,16 +109,18 @@ const LiveDemoPage = () => {
               report.
             </p>
             <div className="report-controls">
+              {/* Dynamically generated list of "runs" */}
               <select
                 className="report-select"
                 value={selectedRun}
                 onChange={(e) => setSelectedRun(e.target.value)}
               >
-                <option value="run1">Run 1</option>
-                <option value="run2">Run 2</option>
-                <option value="run3">Run 3</option>
+                {runs.map((run) => (
+                  <option key={run.run_id} value={run.run_id}>
+                    {run.name}
+                  </option>
+                ))}
               </select>
-              {/* 3. Zastępujemy drugi przycisk */}
               <Button onClick={handleReportDownload} variant="primary">
                 Download Report
               </Button>

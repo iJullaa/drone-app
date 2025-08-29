@@ -1,4 +1,4 @@
-/* Główny kontener stopki */
+/* Main footer container */
 .main-footer {
   background-color: #4a546e;
   color: #f0f0f0;
@@ -6,14 +6,14 @@
   margin-top: 80px;
 }
 
-/* Wewnętrzny kontener do centrowania treści */
+/* Inner container for centering content */
 .footer-content {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* --- GÓRNA SEKCJA --- */
+/* --- UPPER SECTION --- */
 .footer-top {
   display: flex;
   justify-content: space-between;
@@ -23,7 +23,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Stylizacja "przycisku" do wyboru języka */
+/* Styling for language selector button */
 .language-selector {
   background-color: rgba(255, 255, 255, 0.1);
   padding: 12px 25px;
@@ -35,13 +35,13 @@
   gap: 10px;
 }
 
-/* Kontener na ikony social media */
+/* Container for social media icons */
 .social-links {
   display: flex;
   gap: 15px;
 }
 
-/* Styl pojedynczej ikony (białe kółko) */
+/* Styling for individual icon (white circle) */
 .social-links a {
   display: flex;
   align-items: center;
@@ -63,7 +63,7 @@
   background-color: #e6e7e8;
 }
 
-/* --- DOLNA SEKCJA --- */
+/* --- LOWER SECTION --- */
 .footer-bottom {
   display: flex;
   justify-content: space-between;
@@ -72,7 +72,7 @@
   color: #c0c0c0;
 }
 
-/* Kontener na linki prawne */
+/* Container for legal links */
 .legal-links {
   display: flex;
   gap: 25px;
@@ -88,7 +88,7 @@
   color: #fff;
 }
 
-/* Tekst z prawami autorskimi */
+/* Copyright text */
 .copyright {
   margin: 0;
 }

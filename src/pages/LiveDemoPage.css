@@ -9,7 +9,7 @@
   background-size: 40px 40px;
 }
 
-/* Główny kontener na treść (nad animacją) */
+/* Main content container (above the animation) */
 .main-content {
   position: relative;
   z-index: 2;
@@ -31,7 +31,6 @@
   margin-bottom: 40px;
 }
 
-/* --- TO ZOSTAWIAMY, BO DOTYCZY UKŁADU --- */
 .demo-controls {
   margin-bottom: 30px;
 }
@@ -91,7 +90,7 @@
   border: 1px solid #ddd;
 }
 
-/* --- DYNAMICZNA ANIMACJA DRONA --- */
+/* --- DYNAMIC DRONE ANIMATION --- */
 .flying-drone-across {
   position: absolute;
   z-index: 1;

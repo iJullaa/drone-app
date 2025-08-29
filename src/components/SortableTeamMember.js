@@ -18,7 +18,7 @@ export const SortableTeamMember = ({ member }) => {
     transition,
     opacity: isDragging ? 0.5 : 1,
     boxShadow: isDragging ? '0 25px 50px rgba(0,0,0,0.2)' : undefined,
-    zIndex: isDragging ? 10 : 1, // Zapewnia, że przeciągany element jest na wierzchu
+    zIndex: isDragging ? 10 : 1, // Ensures that the dragged item is on top
   };
 
   return (

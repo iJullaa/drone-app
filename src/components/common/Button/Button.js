@@ -1,15 +1,15 @@
 import React from 'react';
 import './Button.css';
 
-// Komponent przyjmuje 'propsy' (właściwości), które go konfigurują
+// The component accepts 'props' (properties) that configure it
 const Button = ({ children, onClick, variant = 'primary', className = '' }) => {
   return (
     <button
       onClick={onClick}
-      // Łączymy klasy: stałą 'btn', dynamiczną 'btn-variant' i opcjonalną 'className'
+      // Combine classes: static 'btn', dynamic 'btn-variant', and optional 'className'
       className={`btn btn-${variant} ${className}`}
     >
-      {children} {/* 'children' to tekst lub ikona wewnątrz przycisku */}
+      {children} {/* 'children' is the text or icon inside the button */}
     </button>
   );
 };
