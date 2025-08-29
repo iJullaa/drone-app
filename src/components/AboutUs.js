@@ -12,7 +12,7 @@ import { SortableTeamMember } from './SortableTeamMember';
 import member1 from '../assets/team-member-1.jpeg';
 import member2 from '../assets/team-member-1.jpeg';
 import member3 from '../assets/team-member-1.jpeg';
-import member4 from '../assets/team-member-1.jpeg';
+import member4 from '../assets/team-member-4.png';
 import member5 from '../assets/team-member-1.jpeg';
 import member6 from '../assets/team-member-1.jpeg';
 
@@ -20,18 +20,8 @@ const initialTeamData = [
   { id: 1, name: 'Krzysztof Chwalisz', role: '[SUPERVISOR]', image: member1 },
   { id: 2, name: 'Julia Szaniawska', role: '', image: member2 },
   { id: 3, name: 'Michał Zawitaj', role: '', image: member3 },
-  {
-    id: 4,
-    name: 'Bartłomiej Kacperski',
-    role: '',
-    image: member4,
-  },
-  {
-    id: 5,
-    name: 'Aleksander Frączak',
-    role: '',
-    image: member5,
-  },
+  { id: 4, name: 'Bartłomiej Kacperski', role: '', image: member4 },
+  { id: 5, name: 'Aleksander Frączak', role: '', image: member5 },
   { id: 6, name: 'Szymon Drdzeń', role: '', image: member6 },
 ];
 
