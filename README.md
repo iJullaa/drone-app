@@ -68,3 +68,36 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# React Project
+
+## Prerequisites
+- Node.js (latest LTS recommended)
+- npm
+
+## Installation
+
+1. Install project dependencies:
+   ```bash
+   npm install
+   npm run format
+   npm start
+   ```
+   
+2. If you run into dependency issues, you can reset by removing the lock file and node_modules:
+   ```bash
+   Remove-Item -Force package-lock.json
+   Remove-Item -Recurse -Force node_modules
+   npm install
+   ```
+
+Additional Packages
+
+This project uses the following libraries:
+
+eslint-config-prettier and eslint-plugin-prettier – ESLint + Prettier integration:
+
+```bash
+npm install eslint-config-prettier eslint-plugin-prettier --save-dev
+```
+
