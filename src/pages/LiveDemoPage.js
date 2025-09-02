@@ -3,23 +3,25 @@ import './LiveDemoPage.css';
 import flyingDrone from '../assets/flying-drone.png';
 import Button from '../components/common/Button/Button';
 
-// Our backend address
+import LiveStreamModal from '../components/LiveStreamModal';
+
 const BACKEND_URL = 'http://localhost:8000';
 
 const LiveDemoPage = () => {
   const [isInspecting, setIsInspecting] = useState(false);
   const [reportReady, setReportReady] = useState(false);
-  const [runs, setRuns] = useState([]); // State for the list of available "runs"
-  const [selectedRun, setSelectedRun] = useState(''); // State for the selected "run"
+  const [runs, setRuns] = useState([]);
+  const [selectedRun, setSelectedRun] = useState('');
 
-  // Effect to fetch the list of "runs" on the initial page load
+  const [isStreamOpen, setIsStreamOpen] = useState(false);
+
+  // Runs
   useEffect(() => {
     const fetchRuns = async () => {
       try {
         const response = await fetch(`${BACKEND_URL}/runs`);
         const data = await response.json();
         setRuns(data);
-        // Set the default selected run to the first in the list
         if (data.length > 0) {
           setSelectedRun(data[0].run_id);
         }
@@ -30,31 +32,31 @@ const LiveDemoPage = () => {
     fetchRuns();
   }, []);
 
-  // Effect to handle real-time WebSocket communication
+  // WebSocket
   useEffect(() => {
     const ws = new WebSocket(`ws://localhost:8000/ws`);
 
     ws.onopen = () => console.log('WebSocket Connected');
     ws.onclose = () => console.log('WebSocket Disconnected');
 
-    // Listen for messages from the server
     ws.onmessage = (event) => {
       if (event.data === 'START_MISSION') {
         setIsInspecting(true);
         setReportReady(false);
+        setIsStreamOpen(true);
       } else if (event.data === 'STOP_MISSION') {
         setIsInspecting(false);
         setReportReady(true);
+        setIsStreamOpen(false);
       }
     };
 
-    // Cleanup: close the connection when the component unmounts
     return () => {
       ws.close();
     };
   }, []);
 
-  // Function to send start/stop commands
+  // start/stop
   const handleToggleInspection = async () => {
     const endpoint = isInspecting ? '/stop-mission' : '/start-mission';
     try {
@@ -64,13 +66,19 @@ const LiveDemoPage = () => {
     }
   };
 
-  // Function to download the report
+  //STOP
+  const handleCloseStream = () => {
+    if (isInspecting) {
+      handleToggleInspection();
+    }
+  };
+
+  // Download report
   const handleReportDownload = () => {
     if (!selectedRun) {
       alert('Please select a run to download.');
       return;
     }
-    // Open the report URL in a new tab - the browser will handle the download
     window.open(`${BACKEND_URL}/report/${selectedRun}`, '_blank');
   };
 
@@ -109,7 +117,6 @@ const LiveDemoPage = () => {
               report.
             </p>
             <div className="report-controls">
-              {/* Dynamically generated list of "runs" */}
               <select
                 className="report-select"
                 value={selectedRun}
@@ -128,6 +135,9 @@ const LiveDemoPage = () => {
           </div>
         )}
       </div>
+
+      {/* Live Stream Modal */}
+      <LiveStreamModal isOpen={isStreamOpen} onClose={handleCloseStream} />
     </div>
   );
 };

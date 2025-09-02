@@ -1,13 +1,13 @@
 import React from 'react';
 import './LiveStreamModal.css';
-import { FaTimes } from 'react-icons/fa'; // Ikona do zamykania
+import { FaTimes } from 'react-icons/fa';
 
-// !!! WAŻNE: Wstaw tutaj adres IP swojego Raspberry Pi !!!
-const RASPBERRY_PI_IP = '192.168.1.100'; // Przykładowy adres IP
+// !!! IMPORTANT: Insert your Raspberry Pi's IP address here!!!
+const RASPBERRY_PI_IP = '192.168.30.1';
 const STREAM_URL = `http://${RASPBERRY_PI_IP}:8081`;
-
+//const STREAM_URL = `https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzhucGRiZHBkM3JheTE3ZTh1ZzZ6a25uN3Z6amN6NnN0aWdsZWk4eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKSxdQJIoiRXHl6/giphy.gif`;
 const LiveStreamModal = ({ isOpen, onClose }) => {
-  // Jeśli modal jest zamknięty, nic nie renderuj
+  // If the modal is closed, don't render anything
   if (!isOpen) {
     return null;
   }
