@@ -1,5 +1,5 @@
 .demo-page-container {
-  padding: 120px 40px 40px 40px;
+  padding: 40px 40px 40px 40px;
   min-height: 100vh;
   position: relative;
   overflow: hidden;
@@ -9,7 +9,6 @@
   background-size: 40px 40px;
 }
 
-/* Main content container (above the animation) */
 .main-content {
   position: relative;
   z-index: 2;
@@ -30,11 +29,9 @@
   max-width: 500px;
   margin-bottom: 40px;
 }
-
 .demo-controls {
   margin-bottom: 30px;
 }
-
 .status-indicator {
   display: flex;
   align-items: center;
@@ -55,16 +52,23 @@
     transform: rotate(360deg);
   }
 }
+
+/* --- NOWY, DYNAMICZNY KONTENER --- */
+.dynamic-content-container {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 900px; /* Szerokość odtwarzacza/karty raportu */
+  min-height: 500px; /* Minimalna wysokość, aby layout się nie zapadał */
+}
+
+/* Karta raportu (przeniesiona do dynamicznego kontenera) */
 .report-card {
-  margin-top: 80px;
   padding: 40px;
   border-radius: 20px;
   background-color: #fff;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
   border: 1px solid #f0f0f0;
   width: 100%;
-  max-width: 600px;
-  text-align: center;
 }
 .report-card h2 {
   font-size: 28px;
@@ -90,7 +94,7 @@
   border: 1px solid #ddd;
 }
 
-/* --- DYNAMIC DRONE ANIMATION --- */
+/* Animacja drona (bez zmian) */
 .flying-drone-across {
   position: absolute;
   z-index: 1;

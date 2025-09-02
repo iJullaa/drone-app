@@ -7,7 +7,6 @@
   aspect-ratio: 16 / 9;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
-
 .livestream-header {
   position: absolute;
   top: 15px;
@@ -23,7 +22,6 @@
   padding: 5px 10px;
   border-radius: 5px;
 }
-
 .live-dot {
   width: 10px;
   height: 10px;
@@ -31,7 +29,6 @@
   border-radius: 50%;
   animation: pulse 1.5s infinite;
 }
-
 @keyframes pulse {
   0% {
     opacity: 1;
@@ -43,14 +40,12 @@
     opacity: 1;
   }
 }
-
 .livestream-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
-
 .fullscreen-hint {
   position: absolute;
   bottom: 15px;
@@ -63,7 +58,6 @@
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-
 .livestream-player:hover .fullscreen-hint {
   opacity: 1;
 }

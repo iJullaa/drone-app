@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import './LiveDemoPage.css';
 import flyingDrone from '../assets/flying-drone.png';
 import Button from '../components/common/Button/Button';
-import LiveStreamModal from '../components/LiveStreamModal';
+// Importujemy nasz nowy, stały odtwarzacz
+import LiveStreamPlayer from '../components/LiveStreamPlayer';
 
 const BACKEND_URL = 'http://localhost:8000';
 
@@ -11,7 +12,6 @@ const LiveDemoPage = () => {
   const [reportReady, setReportReady] = useState(false);
   const [runs, setRuns] = useState([]);
   const [selectedRun, setSelectedRun] = useState('');
-  const [isStreamOpen, setIsStreamOpen] = useState(false);
 
   // Wyciągamy logikę pobierania "runów" do osobnej, reużywalnej funkcji
   const fetchRuns = useCallback(async () => {
@@ -43,16 +43,12 @@ const LiveDemoPage = () => {
       if (event.data === 'START_MISSION') {
         setIsInspecting(true);
         setReportReady(false);
-        setIsStreamOpen(true);
       } else if (event.data === 'STOP_MISSION') {
         setIsInspecting(false);
         setReportReady(true);
-        setIsStreamOpen(false);
-      }
-      // Reagujemy na wiadomość o aktualizacji "runów"
-      else if (event.data === 'RUNS_UPDATED') {
+      } else if (event.data === 'RUNS_UPDATED') {
         console.log('Received runs update from server, refetching...');
-        fetchRuns(); // Ponownie pobieramy listę
+        fetchRuns();
       }
     };
 
@@ -61,6 +57,7 @@ const LiveDemoPage = () => {
     };
   }, [fetchRuns]);
 
+  // Funkcja do wysyłania poleceń start/stop
   const handleToggleInspection = async () => {
     const endpoint = isInspecting ? '/stop-mission' : '/start-mission';
     try {
@@ -70,12 +67,7 @@ const LiveDemoPage = () => {
     }
   };
 
-  const handleCloseStream = () => {
-    if (isInspecting) {
-      handleToggleInspection();
-    }
-  };
-
+  // Funkcja do pobierania raportu
   const handleReportDownload = () => {
     if (!selectedRun) {
       alert('Please select a run to download.');
@@ -110,33 +102,40 @@ const LiveDemoPage = () => {
             </div>
           )}
         </div>
-        {reportReady && (
-          <div className="report-card">
-            <h2>Generate Report</h2>
-            <p className="card-subtitle">
-              The inspection is complete. Please select a run to download the
-              report.
-            </p>
-            <div className="report-controls">
-              <select
-                className="report-select"
-                value={selectedRun}
-                onChange={(e) => setSelectedRun(e.target.value)}
-              >
-                {runs.map((run) => (
-                  <option key={run.run_id} value={run.run_id}>
-                    {run.name}
-                  </option>
-                ))}
-              </select>
-              <Button onClick={handleReportDownload} variant="primary">
-                Download Report
-              </Button>
+
+        {/* --- NOWY, DYNAMICZNY KONTENER --- */}
+        <div className="dynamic-content-container">
+          {/* Jeśli inspekcja jest w toku, pokaż odtwarzacz */}
+          {isInspecting && <LiveStreamPlayer />}
+
+          {/* Jeśli raport jest gotowy, pokaż kartę raportu */}
+          {reportReady && (
+            <div className="report-card">
+              <h2>Generate Report</h2>
+              <p className="card-subtitle">
+                The inspection is complete. Please select a run to download the
+                report.
+              </p>
+              <div className="report-controls">
+                <select
+                  className="report-select"
+                  value={selectedRun}
+                  onChange={(e) => setSelectedRun(e.target.value)}
+                >
+                  {runs.map((run) => (
+                    <option key={run.run_id} value={run.run_id}>
+                      {run.name}
+                    </option>
+                  ))}
+                </select>
+                <Button onClick={handleReportDownload} variant="primary">
+                  Download Report
+                </Button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-      <LiveStreamModal isOpen={isStreamOpen} onClose={handleCloseStream} />
     </div>
   );
 };
