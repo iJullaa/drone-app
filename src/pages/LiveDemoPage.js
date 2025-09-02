@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './LiveDemoPage.css';
 import flyingDrone from '../assets/flying-drone.png';
 import Button from '../components/common/Button/Button';
-
 import LiveStreamModal from '../components/LiveStreamModal';
 
 const BACKEND_URL = 'http://localhost:8000';
@@ -12,27 +11,28 @@ const LiveDemoPage = () => {
   const [reportReady, setReportReady] = useState(false);
   const [runs, setRuns] = useState([]);
   const [selectedRun, setSelectedRun] = useState('');
-
   const [isStreamOpen, setIsStreamOpen] = useState(false);
 
-  // Runs
-  useEffect(() => {
-    const fetchRuns = async () => {
-      try {
-        const response = await fetch(`${BACKEND_URL}/runs`);
-        const data = await response.json();
-        setRuns(data);
-        if (data.length > 0) {
-          setSelectedRun(data[0].run_id);
-        }
-      } catch (error) {
-        console.error('Failed to fetch runs:', error);
+  // Wyciągamy logikę pobierania "runów" do osobnej, reużywalnej funkcji
+  const fetchRuns = useCallback(async () => {
+    try {
+      const response = await fetch(`${BACKEND_URL}/runs`);
+      const data = await response.json();
+      setRuns(data);
+      if (data.length > 0 && !selectedRun) {
+        setSelectedRun(data[0].run_id);
       }
-    };
-    fetchRuns();
-  }, []);
+    } catch (error) {
+      console.error('Failed to fetch runs:', error);
+    }
+  }, [selectedRun]);
 
-  // WebSocket
+  // Efekt do pobierania "runów" przy pierwszym załadowaniu
+  useEffect(() => {
+    fetchRuns();
+  }, [fetchRuns]);
+
+  // Efekt do obsługi WebSocket
   useEffect(() => {
     const ws = new WebSocket(`ws://localhost:8000/ws`);
 
@@ -49,14 +49,18 @@ const LiveDemoPage = () => {
         setReportReady(true);
         setIsStreamOpen(false);
       }
+      // Reagujemy na wiadomość o aktualizacji "runów"
+      else if (event.data === 'RUNS_UPDATED') {
+        console.log('Received runs update from server, refetching...');
+        fetchRuns(); // Ponownie pobieramy listę
+      }
     };
 
     return () => {
       ws.close();
     };
-  }, []);
+  }, [fetchRuns]);
 
-  // start/stop
   const handleToggleInspection = async () => {
     const endpoint = isInspecting ? '/stop-mission' : '/start-mission';
     try {
@@ -66,14 +70,12 @@ const LiveDemoPage = () => {
     }
   };
 
-  //STOP
   const handleCloseStream = () => {
     if (isInspecting) {
       handleToggleInspection();
     }
   };
 
-  // Download report
   const handleReportDownload = () => {
     if (!selectedRun) {
       alert('Please select a run to download.');
@@ -89,7 +91,6 @@ const LiveDemoPage = () => {
         alt="Flying drone animation"
         className="flying-drone-across"
       />
-
       <div className="main-content">
         <h1>Live Drone Inspection</h1>
         <p>Start the simulation to begin automated crack detection.</p>
@@ -135,8 +136,6 @@ const LiveDemoPage = () => {
           </div>
         )}
       </div>
-
-      {/* Live Stream Modal */}
       <LiveStreamModal isOpen={isStreamOpen} onClose={handleCloseStream} />
     </div>
   );
