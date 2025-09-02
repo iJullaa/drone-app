@@ -1,3 +1,60 @@
+
+# React Project
+
+## Prerequisites
+- Node.js (latest LTS recommended)
+- npm
+
+## Installation
+
+1. Install project dependencies:
+```bash
+   npm install
+   npm run format
+   npm start
+```
+   
+2. If you run into dependency issues, you can reset by removing the lock file and node_modules:
+```bash
+   Remove-Item -Force package-lock.json
+   Remove-Item -Recurse -Force node_modules
+   npm install
+```
+
+Additional Packages
+
+This project uses the following libraries:
+
+eslint-config-prettier and eslint-plugin-prettier – ESLint + Prettier integration:
+```bash
+npm install eslint-config-prettier eslint-plugin-prettier --save-dev
+```
+
+react-scripts (v5.0.1) – base scripts for Create React App:
+```bash
+npm install react-scripts@5.0.1 --save
+```
+
+react-player – media player for React:
+```bash
+npm install react-player --save
+```
+
+swiper – slider/carousel library:
+```bash
+npm install swiper
+```
+
+react-router-dom – routing for React:
+```bash
+npm install react-router-dom
+```
+
+react-router-hash-link – smooth scrolling with hash links:
+```bash
+npm install react-router-hash-link
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,36 +125,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-# React Project
-
-## Prerequisites
-- Node.js (latest LTS recommended)
-- npm
-
-## Installation
-
-1. Install project dependencies:
-   ```bash
-   npm install
-   npm run format
-   npm start
-   ```
-   
-2. If you run into dependency issues, you can reset by removing the lock file and node_modules:
-   ```bash
-   Remove-Item -Force package-lock.json
-   Remove-Item -Recurse -Force node_modules
-   npm install
-   ```
-
-Additional Packages
-
-This project uses the following libraries:
-
-eslint-config-prettier and eslint-plugin-prettier – ESLint + Prettier integration:
-
-```bash
-npm install eslint-config-prettier eslint-plugin-prettier --save-dev
-```
-
