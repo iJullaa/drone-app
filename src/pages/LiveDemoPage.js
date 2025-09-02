@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import './LiveDemoPage.css';
 import flyingDrone from '../assets/flying-drone.png';
 import Button from '../components/common/Button/Button';
-// Importujemy nasz nowy, stały odtwarzacz
 import LiveStreamPlayer from '../components/LiveStreamPlayer';
 
 const BACKEND_URL = 'http://localhost:8000';
@@ -13,7 +12,6 @@ const LiveDemoPage = () => {
   const [runs, setRuns] = useState([]);
   const [selectedRun, setSelectedRun] = useState('');
 
-  // Wyciągamy logikę pobierania "runów" do osobnej, reużywalnej funkcji
   const fetchRuns = useCallback(async () => {
     try {
       const response = await fetch(`${BACKEND_URL}/runs`);
@@ -27,12 +25,10 @@ const LiveDemoPage = () => {
     }
   }, [selectedRun]);
 
-  // Efekt do pobierania "runów" przy pierwszym załadowaniu
   useEffect(() => {
     fetchRuns();
   }, [fetchRuns]);
 
-  // Efekt do obsługi WebSocket
   useEffect(() => {
     const ws = new WebSocket(`ws://localhost:8000/ws`);
 
@@ -57,7 +53,6 @@ const LiveDemoPage = () => {
     };
   }, [fetchRuns]);
 
-  // Funkcja do wysyłania poleceń start/stop
   const handleToggleInspection = async () => {
     const endpoint = isInspecting ? '/stop-mission' : '/start-mission';
     try {
@@ -67,13 +62,20 @@ const LiveDemoPage = () => {
     }
   };
 
-  // Funkcja do pobierania raportu
   const handleReportDownload = () => {
     if (!selectedRun) {
       alert('Please select a run to download.');
       return;
     }
     window.open(`${BACKEND_URL}/report/${selectedRun}`, '_blank');
+  };
+
+  const handleVideoDownload = () => {
+    if (!selectedRun) {
+      alert('Please select a run to download the video for.');
+      return;
+    }
+    window.open(`${BACKEND_URL}/video/${selectedRun}`, '_blank');
   };
 
   return (
@@ -103,18 +105,15 @@ const LiveDemoPage = () => {
           )}
         </div>
 
-        {/* --- NOWY, DYNAMICZNY KONTENER --- */}
         <div className="dynamic-content-container">
-          {/* Jeśli inspekcja jest w toku, pokaż odtwarzacz */}
           {isInspecting && <LiveStreamPlayer />}
 
-          {/* Jeśli raport jest gotowy, pokaż kartę raportu */}
           {reportReady && (
             <div className="report-card">
               <h2>Generate Report</h2>
               <p className="card-subtitle">
                 The inspection is complete. Please select a run to download the
-                report.
+                report or video.
               </p>
               <div className="report-controls">
                 <select
@@ -130,6 +129,9 @@ const LiveDemoPage = () => {
                 </select>
                 <Button onClick={handleReportDownload} variant="primary">
                   Download Report
+                </Button>
+                <Button onClick={handleVideoDownload} variant="secondary">
+                  Download Video
                 </Button>
               </div>
             </div>
