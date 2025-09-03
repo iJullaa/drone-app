@@ -9,12 +9,12 @@ import {
 } from '@dnd-kit/sortable';
 import { SortableTeamMember } from './SortableTeamMember';
 
-import member1 from '../assets/team-member-1.jpeg';
-import member2 from '../assets/team-member-1.jpeg';
-import member3 from '../assets/team-member-1.jpeg';
+import member1 from '../assets/team-member-1.png';
+import member2 from '../assets/team-member-2.png';
+import member3 from '../assets/team-member-3.png';
 import member4 from '../assets/team-member-4.png';
-import member5 from '../assets/team-member-1.jpeg';
-import member6 from '../assets/team-member-1.jpeg';
+import member5 from '../assets/team-member-5.png';
+import member6 from '../assets/team-member-6.png';
 
 const initialTeamData = [
   { id: 1, name: 'Krzysztof Chwalisz', role: '[SUPERVISOR]', image: member1 },
