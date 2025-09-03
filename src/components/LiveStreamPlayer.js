@@ -3,7 +3,7 @@ import './LiveStreamPlayer.css';
 
 //const STREAM_URL =
 //  'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzhucGRiZHBkM3JheTE3ZTh1ZzZ6a25uN3Z6amN6NnN0aWdsZWk4eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKSxdQJIoiRXHl6/giphy.gif';
-const RASPBERRY_PI_IP = '192.168.30.1';
+const RASPBERRY_PI_IP = '192.168.138.215';
 const STREAM_URL = `http://${RASPBERRY_PI_IP}:8081`;
 const LiveStreamPlayer = () => {
   const playerRef = React.useRef(null);
