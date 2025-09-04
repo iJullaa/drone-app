@@ -9,12 +9,10 @@ const HomePage = () => {
     <>
       <Hero />
       <main>
-        {/* 1. DODAJEMY KOTWICĘ DLA "ABOUT PROJECT" */}
         <section id="project">
           <AboutProject />
         </section>
 
-        {/* 2. DODAJEMY KOTWICĘ DLA "ABOUT US" */}
         <section id="about">
           <AboutUs />
         </section>

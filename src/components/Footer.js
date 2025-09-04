@@ -12,7 +12,6 @@ const Footer = () => {
   return (
     <footer className="main-footer">
       <div className="footer-content">
-        {/* --- UPPER SECTION --- */}
         <div className="footer-top">
           <div className="language-selector">
             Global / English <span>▼</span>
@@ -49,7 +48,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* --- LOWER SECTION --- */}
         <div className="footer-bottom">
           <div className="legal-links">
             <a href="/privacy">Privacy</a>

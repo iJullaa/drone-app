@@ -1,60 +1,40 @@
-/* Semi-transparent background behind the video */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(10, 25, 47, 0.8);
-  z-index: 9998;
+  background-color: rgba(10, 25, 47, 0.85);
+  z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  animation: fadeIn 0.3s ease;
 }
 
-/* White border around the video */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .modal-content {
-  background-color: #f0f0f0;
-  padding: 20px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 15px;
   cursor: default;
   width: 90%;
   max-width: 1100px;
-
-  /* KEY PROPERTY: Creating the distinctive shape */
-  clip-path: polygon(
-    0 4%,
-    4% 0,
-    96% 0,
-    100% 4%,
-    100% 96%,
-    96% 100%,
-    4% 100%,
-    0 96%
-  );
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
-/* Wrapper that maintains the 16:9 video aspect ratio */
-.player-wrapper {
-  position: relative;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
-}
-
-/* Video player that fills the wrapper */
-.react-player {
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  /* Overriding clip-path for the player itself to also have rounded corners */
-  clip-path: polygon(
-    0 4%,
-    4% 0,
-    96% 0,
-    100% 4%,
-    100% 96%,
-    96% 100%,
-    4% 100%,
-    0 96%
-  );
+.modal-content video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }

@@ -1,27 +1,36 @@
-import React from 'react';
-import ReactPlayer from 'react-player';
+import React, { useEffect } from 'react';
 import './VideoModal.css';
+
+import myDroneVideo from '../assets/dron_video.mp4';
 
 const VideoModal = ({ isOpen, onClose }) => {
   if (!isOpen) {
     return null;
   }
 
-  const handleContentClick = (e) => {
-    e.stopPropagation();
-  };
+  const videoRef = React.useRef(null);
+
+  useEffect(() => {
+    if (isOpen && videoRef.current) {
+      videoRef.current.play().catch((error) => {
+        console.warn('Autoplay was prevented:', error);
+      });
+    }
+  }, [isOpen]);
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={handleContentClick}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="player-wrapper">
-          <ReactPlayer
-            className="react-player"
-            url="https://vimeo.com/262703415"
+          <video
+            ref={videoRef}
+            src={myDroneVideo}
             width="100%"
             height="100%"
-            playing={false}
-            controls={true}
+            controls
+            autoPlay
+            muted
+            loop
           />
         </div>
       </div>
